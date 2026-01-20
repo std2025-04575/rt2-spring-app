@@ -1,6 +1,14 @@
 package jp.co.sss.crud.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jp.co.sss.crud.bean.EmployeeBean;
+import jp.co.sss.crud.entity.Employee;
+import jp.co.sss.crud.repository.EmployeeRepository;
+import jp.co.sss.crud.util.BeanManager;
 
 /**
  * 従業員名検索サービスクラス。
@@ -19,6 +27,8 @@ public class SearchForEmployeesByEmpNameService {
 	 * Spring DIによって自動注入されます。
 	 */
 	//TODO ここに記述
+	@Autowired
+	EmployeeRepository employeeRepository;
 
 	/**
 	 * 従業員名による部分一致検索を実行します。
@@ -32,5 +42,12 @@ public class SearchForEmployeesByEmpNameService {
 	 *         該当する従業員が存在しない場合は空のリストを返却
 	 */
 	//TODO ここに記述
+	public List<EmployeeBean> execute(String searchString) {
+		//		指定された検索文字列を含む従業員名を持つ従業員を検索
+		List<Employee> employeeList = employeeRepository.findByEmpNameContainingOrderByEmpId(searchString);
 
+		//		 BeanManagerを使用してEmployeeBeanリストに変換して返却
+		List<EmployeeBean> employeeBeanList = BeanManager.copyEntityListToBeanList(employeeList);
+		return employeeBeanList;
+	}
 }

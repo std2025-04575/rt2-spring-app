@@ -1,6 +1,15 @@
 package jp.co.sss.crud.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jp.co.sss.crud.bean.EmployeeBean;
+import jp.co.sss.crud.entity.Department;
+import jp.co.sss.crud.entity.Employee;
+import jp.co.sss.crud.repository.EmployeeRepository;
+import jp.co.sss.crud.util.BeanManager;
 
 /**
  * 部署別従業員検索サービスクラス。
@@ -19,7 +28,8 @@ public class SearchForEmployeesByDepartmentService {
 	 * Spring DIによって自動注入されます。
 	 */
 	//TODO ここに記述
-
+	@Autowired
+	EmployeeRepository employeeRepository;
 	/**
 	 * 指定された部署に所属する従業員情報を取得します。
 	 * 
@@ -32,5 +42,19 @@ public class SearchForEmployeesByDepartmentService {
 	 *         該当する従業員が存在しない場合は空のリストを返却
 	 */
 	//TODO ここに記述
-
+	public List<EmployeeBean> execute(Integer deptId) {
+//		部署IDを基に該当部署のDepartmentオブジェクトを作成
+		Department department = new Department();
+		
+//		部署IDを代入
+		department.setDeptId(deptId);
+		
+//		指定された部署に所属する従業員情報を取得
+		List<Employee> employeeList = employeeRepository.findByDepartmentOrderByEmpId(department);
+		
+//		検索結果はBeanManagerを使用してEmployeeBeanリストに変換して返却
+		List<EmployeeBean> employeeBeanList = BeanManager.copyEntityListToBeanList(employeeList);
+		
+		return employeeBeanList;
+	}
 }
