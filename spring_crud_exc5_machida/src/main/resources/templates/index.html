@@ -12,9 +12,9 @@
 		<!-- エラーメッセージの出力(入力チェック) -->
 		<p>
 			<span th:each="error:${#fields.detailedErrors()}"> 
-				<span th:text="${error.message}" class="error"></span><br />
+				<span th:text="${error.message}"></span><br />
 			</span>
-			<span th:text="${errMessage}" class="error"></span>
+			<span th:text="${errMessage}"></span>
 		</p>
 		<!-- エラーメッセージの出力(存在チェック) -->
 		<div class="login_form">
