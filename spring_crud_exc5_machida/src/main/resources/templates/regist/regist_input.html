@@ -14,13 +14,15 @@
 				<span th:text="${error.message}" class="error"></span><br />
 			</span>
 		</p>
-		<!--		<span th:errors="*{empPass}"></span>-->
+
 		<div class="update">
 			<form th:action="@{/regist/check}" method="post">
 				<div class="form">
 					<div class="label">パスワード：</div>
 					<div class="input required">
 						<input type="password" th:field="*{empPass}" />
+						<input type="checkbox" id="togglePassword" />
+						<label for="togglePassword">パスワードを表示</label>
 					</div>
 				</div>
 
@@ -90,6 +92,8 @@
 			</form>
 		</div>
 	</div>
+	<script text="text/javascript" th:src="@{/js/password.js}" charset="UTF-8">
+	</script>
 </body>
 
 </html>

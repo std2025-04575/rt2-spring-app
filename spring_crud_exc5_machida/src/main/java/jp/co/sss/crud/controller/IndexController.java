@@ -42,6 +42,8 @@ public class IndexController {
 		if (loginResultBean.isLogin()) {
 			sesson.setAttribute("loginUser", loginResultBean.getLoginUser());
 			path = "redirect:/list";
+			
+			
 		} else {
 			model.addAttribute("errMessage", loginResultBean.getErrorMsg());
 		}

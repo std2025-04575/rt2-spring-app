@@ -126,8 +126,8 @@ div.login_label {
 
 div.login_input {
 	
-	width: 410px;
-	height: 35px;
+	width: 500px;
+	height: 50px;
 	text-align: left;
 }
  
@@ -147,6 +147,11 @@ input[type=submit] {
 	padding: 0px 10px;
 	border-radius: 6px;
 	color: #12526d;
+	
+}
+
+input[type=submit]:hover {
+	background-color: #BFC5CA;
 }
 
 /* ---- エラーメッセージ ---- */
