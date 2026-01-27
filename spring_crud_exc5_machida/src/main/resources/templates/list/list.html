@@ -25,7 +25,7 @@
 	<!--	該当社員がいる場合-->
 	<table class="list_table" th:if="!${#lists.isEmpty(employees)}">
 		<tr>
-			<th>社員ID</th>
+			<th onclick="sort()">社員ID</th>
 			<th>社員名</th>
 			<th class="gender">性別</th>
 			<th class="address">住所</th>
@@ -35,7 +35,7 @@
 			<th th:if="${session.loginUser.empId==2}" class="button">変更</th>
 			<th th:if="${session.loginUser.empId==2}" class="button">削除</th>
 		</tr>
-		<tr th:each="employee: ${employees}">
+		<tr th:each="employee: ${employees}" class="sort_table">
 			<td th:text="${employee.empId}"></td>
 			<td th:text="${employee.empName}"></td>
 			<!--
@@ -65,6 +65,8 @@
 			</td>
 		</tr>
 	</table>
+	<script type="text/javascript" th:src="@{/js/sort_empid.js}" charset="UTF-8">
+	</script>
 </body>
 
 </html>
