@@ -2,7 +2,7 @@ let isAsc = true;
 
 function sort() {
 	//	テーブル情報を取得
-	let employee = document.querySelectorAll('list_table');
+	let employee = document.querySelector('.list_table');
 	//行情報を取得
 	let emprow = employee.querySelectorAll('tr');
 

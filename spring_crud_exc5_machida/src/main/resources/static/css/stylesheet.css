@@ -44,6 +44,10 @@ th.empId {
 	width: 60px;
 }
 
+th.empId:hover {
+	background-color:#BFC5CA;
+}
+
 th.empName {
 	width: 80px;
 }
