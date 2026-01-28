@@ -84,6 +84,10 @@ table td {
 	padding-left: 5px;
 }
 
+p.back_to_top_link {
+	text-align: center;
+}
+
 
 /* ---- 入力フォーム(検索、登録、変更、削除) ---- */
 div.form {

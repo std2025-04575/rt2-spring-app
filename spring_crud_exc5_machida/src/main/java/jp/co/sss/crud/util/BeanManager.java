@@ -153,6 +153,7 @@ public class BeanManager {
 			employeeBean.setAddress(employee.getAddress());
 			employeeBean.setBirthday(employee.getBirthday());
 			employeeBean.setAuthority(employee.getAuthority());
+			employeeBean.setDeleteFlag(employee.getDeleteFlag());
 			employeeBean.setDeptId(employee.getDepartment().getDeptId());
 
 			tempEmployeeBeans.add(employeeBean);

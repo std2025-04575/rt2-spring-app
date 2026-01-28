@@ -13,6 +13,7 @@ import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.service.SearchAllEmployeesService;
 import jp.co.sss.crud.service.SearchForEmployeesByDepartmentService;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpNameService;
+import jp.co.sss.crud.service.SearchForRetiredParsonsByDeleteFlagService;
 
 @Controller
 public class ListController {
@@ -25,6 +26,9 @@ public class ListController {
 
 	@Autowired
 	SearchForEmployeesByDepartmentService searchForEmployeesByDepartmentService;
+	
+	@Autowired
+	SearchForRetiredParsonsByDeleteFlagService searchForRetiredParsonsByDeleteFlagService;
 
 	/**
 	 * 社員情報を全件検索した結果を出力
@@ -82,5 +86,15 @@ public class ListController {
 
 		model.addAttribute("employees", searchByDepartmentList);
 		return "list/list";
+	}
+	
+	@RequestMapping(path = "/list/retired", method = RequestMethod.GET)
+	public String findByRetired(Model model) {
+		List<EmployeeBean> searchByRetiredList = null;
+		
+		searchByRetiredList = searchForRetiredParsonsByDeleteFlagService.execute();
+		
+		model.addAttribute("retiredPersons",searchByRetiredList);
+		return "list/retired_list";
 	}
 }

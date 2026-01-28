@@ -3,6 +3,7 @@ package jp.co.sss.crud.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.sss.crud.entity.Employee;
 import jp.co.sss.crud.repository.EmployeeRepository;
 
 /**
@@ -23,6 +24,7 @@ public class DeleteEmployeeService {
 	//TODO ここに記述
 	@Autowired
 	EmployeeRepository employeeRepository;
+
 	/**
 	 * 指定された従業員IDの従業員情報を削除メソッド。
 	 * データベースから該当する従業員レコードを物理削除します。
@@ -30,8 +32,16 @@ public class DeleteEmployeeService {
 	 * @param forDeleteEmpId 削除対象の従業員ID
 	 */
 	//TODO ここに記述
-public void execute(Integer forDeleteEmpId) {
-//	データベースから該当する従業員レコードを物理削除
-	employeeRepository.deleteById(forDeleteEmpId);
-}
+	public void execute(Integer forDeleteEmpId) {
+		//		//	データベースから該当する従業員レコードを物理削除
+		//		employeeRepository.deleteById(forDeleteEmpId);
+
+		//	データベースから該当する従業員レコードを論理削除
+		//	社員IDから該当の社員情報を取得
+		Employee employee = employeeRepository.findByEmpId(forDeleteEmpId);
+//		論理削除の値である1を代入
+		employee.setDeleteFlag(1);
+//		更新処理
+		employeeRepository.save(employee);
+	}
 }

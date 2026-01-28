@@ -40,6 +40,8 @@ public class RegisterEmployeeService {
 	public void execute(EmployeeForm employeeForm) {
 //		EmployeeFormに格納された従業員情報をEmployeeエンティティに変換
 		Employee employee = BeanManager.copyFormToEntity(employeeForm);
+//		削除フラグを設定
+		employee.setDeleteFlag(0);
 		
 		employee = employeeRepository.save(employee);
 		

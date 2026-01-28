@@ -13,6 +13,10 @@
 		<a th:href="@{/regist/input}">新規社員登録</a>
 	</div>
 
+	<div th:if="${session.loginUser.empId==2}" class="regist_link">
+		<a th:href="@{/list/retired}">退職者一覧</a>
+	</div>
+
 	<!--	該当社員が0名の場合-->
 	<th:block th:if="${#lists.isEmpty(employees)}">
 		<div class="message">
@@ -36,33 +40,35 @@
 			<th th:if="${session.loginUser.empId==2}" class="button">削除</th>
 		</tr>
 		<tr th:each="employee: ${employees}" class="sort_table">
-			<td th:text="${employee.empId}"></td>
-			<td th:text="${employee.empName}"></td>
-			<!--
+			<th:block th:if="${employee.deleteFlag==0}">
+				<td th:text="${employee.empId}"></td>
+				<td th:text="${employee.empName}"></td>
+				<!--
 				th:switchとth:caseはJavaのswitch文の様に条件分岐を表現できる
 				この場合はgender=1の場合[男性]、gender=2の場合[女性]と表示される
 			-->
-			<td th:switch="${employee.gender}">
-				<span th:case="1">男性</span> <span th:case="2">女性</span>
-			</td>
-			<td th:text="${employee.address}"></td>
-			<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
-			<td th:switch="${employee.authority}">
-				<span th:case="1">一般</span> <span th:case="2">管理者</span>
-			</td>
-			<td th:text="${employee.deptName}"></td>
-			<td th:if="${session.loginUser.empId==2}">
-				<form method="get" th:action="@{/update/input}">
-					<input type="hidden" name="empId" th:value="${employee.empId}" />
-					<input type="submit" value="変更" />
-				</form>
-			</td>
-			<td th:if="${session.loginUser.empId==2}">
-				<form method="get" th:action="@{/delete/check}">
-					<input type="hidden" name="empId" th:value="${employee.empId}" />
-					<input type="submit" value="削除" class="delete" />
-				</form>
-			</td>
+				<td th:switch="${employee.gender}">
+					<span th:case="1">男性</span> <span th:case="2">女性</span>
+				</td>
+				<td th:text="${employee.address}"></td>
+				<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
+				<td th:switch="${employee.authority}">
+					<span th:case="1">一般</span> <span th:case="2">管理者</span>
+				</td>
+				<td th:text="${employee.deptName}"></td>
+				<td th:if="${session.loginUser.empId==2}">
+					<form method="get" th:action="@{/update/input}">
+						<input type="hidden" name="empId" th:value="${employee.empId}" />
+						<input type="submit" value="変更" />
+					</form>
+				</td>
+				<td th:if="${session.loginUser.empId==2}">
+					<form method="get" th:action="@{/delete/check}">
+						<input type="hidden" name="empId" th:value="${employee.empId}" />
+						<input type="submit" value="削除" class="delete" />
+					</form>
+				</td>
+			</th:block>
 		</tr>
 	</table>
 	<script type="text/javascript" th:src="@{/js/sort_empid.js}" charset="UTF-8">

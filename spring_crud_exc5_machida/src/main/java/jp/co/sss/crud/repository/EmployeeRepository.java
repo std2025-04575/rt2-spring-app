@@ -17,7 +17,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	Employee findByEmpIdAndEmpPass(Integer empId, String empPass);
 	
 	/**
-	 * 全ての従業員の情報をを従業員ID昇順で全件検索
+	 * 全ての従業員の情報を従業員ID昇順で全件検索
 	 */
 	List<Employee> findAllByOrderByEmpId();
 	
@@ -40,7 +40,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	 */
 	Employee findByEmpId(Integer empId);
 	
-	
+	/**
+	 * 削除フラグでDB検索
+	 */
+	List<Employee> findByDeleteFlagOrderByEmpId(Integer deleteFlag);
 	
 	
 	

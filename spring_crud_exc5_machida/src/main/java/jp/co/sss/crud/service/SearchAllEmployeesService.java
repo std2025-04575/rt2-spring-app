@@ -46,7 +46,6 @@ public class SearchAllEmployeesService {
 		//		 BeanManagerを使用してEmployeeBeanリストに変換して返却
 		//		EmployeeBean employeeBean = new EmployeeBean();
 
-		//		試してみたこと
 		List<EmployeeBean> employeeBeanList = BeanManager.copyEntityListToBeanList(employeeList);
 
 		return employeeBeanList;

@@ -39,6 +39,9 @@ public class Employee {
 	@Column
 	private Integer authority;
 	
+	@Column
+	private Integer deleteFlag;
+	
 	@ManyToOne
 	@JoinColumn(name = "dept_id", referencedColumnName = "deptId")
 	private Department department;
@@ -84,6 +87,12 @@ public class Employee {
 	}
 	public void setAuthority(Integer authority) {
 		this.authority = authority;
+	}
+	public Integer getDeleteFlag() {
+		return deleteFlag;
+	}
+	public void setDeleteFlag(Integer deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 	public Department getDepartment() {
 		return department;
