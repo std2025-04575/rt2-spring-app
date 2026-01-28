@@ -44,8 +44,6 @@ public class SearchAllEmployeesService {
 		List<Employee> employeeList = employeeRepository.findAllByOrderByEmpId();
 
 		//		 BeanManagerを使用してEmployeeBeanリストに変換して返却
-		//		EmployeeBean employeeBean = new EmployeeBean();
-
 		List<EmployeeBean> employeeBeanList = BeanManager.copyEntityListToBeanList(employeeList);
 
 		return employeeBeanList;

@@ -39,9 +39,11 @@ public class DeleteEmployeeService {
 		//	データベースから該当する従業員レコードを論理削除
 		//	社員IDから該当の社員情報を取得
 		Employee employee = employeeRepository.findByEmpId(forDeleteEmpId);
-//		論理削除の値である1を代入
+
+		//		論理削除の値である1を代入
 		employee.setDeleteFlag(1);
-//		更新処理
+
+		//		更新処理
 		employeeRepository.save(employee);
 	}
 }

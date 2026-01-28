@@ -17,31 +17,35 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	Employee findByEmpIdAndEmpPass(Integer empId, String empPass);
 	
 	/**
-	 * 全ての従業員の情報を従業員ID昇順で全件検索
+	 * 全ての従業員情報を従業員ID昇順で全件検索
 	 */
 	List<Employee> findAllByOrderByEmpId();
 	
 	/**
 	 * 指定された検索文字列を含む従業員名を持つ従業員を検索
 	 * 
-	 * 曖昧検索
+	 * @param 検索文字列
 	 */
 	List<Employee> findByEmpNameContainingOrderByEmpId(String empName);
 	
 	/**
 	 * 指定された部署に所属する従業員情報を取得
 	 * 
-	 * 
+	 * @param departmentテーブル
 	 */
 	List<Employee> findByDepartmentOrderByEmpId(Department department);
 	
 	/**
 	 * 社員IDでDB検索
+	 * 
+	 * @param 社員ID
 	 */
 	Employee findByEmpId(Integer empId);
 	
 	/**
 	 * 削除フラグでDB検索
+	 * 
+	 * @param 削除フラグ
 	 */
 	List<Employee> findByDeleteFlagOrderByEmpId(Integer deleteFlag);
 	

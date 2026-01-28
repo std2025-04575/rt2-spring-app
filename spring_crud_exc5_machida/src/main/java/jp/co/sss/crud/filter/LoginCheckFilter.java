@@ -18,7 +18,7 @@ public class LoginCheckFilter extends HttpFilter {
 
 		//		リクエストURLを取得
 		String requestURL = request.getRequestURI();
-		
+
 		if (requestURL.indexOf("/html/") != -1 ||
 				requestURL.indexOf("/css/") != -1 ||
 				requestURL.indexOf("/img/") != -1 ||
@@ -27,12 +27,9 @@ public class LoginCheckFilter extends HttpFilter {
 			return;
 		}
 
-//		System.out.println(requestURL + "1");
-
 		if (requestURL.endsWith("/") ||
 				requestURL.endsWith("/login")) {
 			//			リクエストURLがログイン画面宛ての場合
-//			System.out.println(requestURL + "2");
 			chain.doFilter(request, response);
 			return;
 
@@ -41,8 +38,7 @@ public class LoginCheckFilter extends HttpFilter {
 			HttpSession session = request.getSession();
 
 			//			セッション情報からユーザのログイン情報を取得
-			EmployeeBean loginUser = (EmployeeBean)  session.getAttribute("loginUser");
-//			System.out.println(empId);
+			EmployeeBean loginUser = (EmployeeBean) session.getAttribute("loginUser");
 
 			if (loginUser == null) {
 				//				ログイン情報が存在しない場合

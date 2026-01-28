@@ -27,6 +27,7 @@ public class RegisterEmployeeService {
 	//TODO ここに記述
 	@Autowired
 	EmployeeRepository employeeRepository;
+
 	/**
 	 * 新規従業員を登録します。
 	 * 
@@ -38,16 +39,15 @@ public class RegisterEmployeeService {
 	 */
 	//TODO ここに記述
 	public void execute(EmployeeForm employeeForm) {
-//		EmployeeFormに格納された従業員情報をEmployeeエンティティに変換
+		//		EmployeeFormに格納された従業員情報をEmployeeエンティティに変換
 		Employee employee = BeanManager.copyFormToEntity(employeeForm);
-//		削除フラグを設定
+
+		//		削除フラグを設定
 		employee.setDeleteFlag(0);
-		
+
+		//     DBを更新
 		employee = employeeRepository.save(employee);
-		
+
 	}
-	
-	
-	
-	
+
 }

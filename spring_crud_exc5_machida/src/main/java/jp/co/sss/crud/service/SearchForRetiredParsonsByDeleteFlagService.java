@@ -28,14 +28,12 @@ public class SearchForRetiredParsonsByDeleteFlagService {
 	 */
 	@Autowired
 	EmployeeRepository employeeRepository;
-	
+
 	public List<EmployeeBean> execute() {
-		//		データベースから退職者を従業員ID昇順で取得
+		//		データベースから退職者情報を従業員ID昇順で取得
 		List<Employee> retiredPersonList = employeeRepository.findByDeleteFlagOrderByEmpId(1);
 
 		//		 BeanManagerを使用してEmployeeBeanリストに変換して返却
-		//		EmployeeBean employeeBean = new EmployeeBean();
-
 		List<EmployeeBean> retiredPersonBeanList = BeanManager.copyEntityListToBeanList(retiredPersonList);
 
 		return retiredPersonBeanList;

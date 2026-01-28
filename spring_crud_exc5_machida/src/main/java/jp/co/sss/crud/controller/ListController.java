@@ -88,6 +88,13 @@ public class ListController {
 		return "list/list";
 	}
 	
+	/**
+	 * 社員情報を削除フラグ=1で検索した結果を出力
+	 * 
+	 * @param model モデル
+	 * @return
+	 * @return 選先のビュー
+	 */
 	@RequestMapping(path = "/list/retired", method = RequestMethod.GET)
 	public String findByRetired(Model model) {
 		List<EmployeeBean> searchByRetiredList = null;

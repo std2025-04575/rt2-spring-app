@@ -48,6 +48,7 @@ public class SearchForEmployeesByEmpNameService {
 
 		//		 BeanManagerを使用してEmployeeBeanリストに変換して返却
 		List<EmployeeBean> employeeBeanList = BeanManager.copyEntityListToBeanList(employeeList);
+
 		return employeeBeanList;
 	}
 }

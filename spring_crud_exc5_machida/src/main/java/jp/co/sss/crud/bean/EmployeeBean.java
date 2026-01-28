@@ -33,7 +33,7 @@ public class EmployeeBean {
 	/** 権限レベル */
 	private Integer authority;
 	
-	/**削除フラグ*/
+	/**削除フラグ（1:在籍、2:退職）*/
 	private Integer deleteFlag;
 
 	/** 部署ID */
@@ -228,9 +228,9 @@ public class EmployeeBean {
 	}
 
 	/**
-	 * 削除フラグを設定します
+	 * 削除フラグを設定します。
 	 * 
-	 * @param deleteFlag セットする deleteFlag
+	 * @param deleteFlag 削除フラグ
 	 */
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;

@@ -27,6 +27,7 @@ public class UpdateEmployeeService {
 	//TODO ここに記述
 	@Autowired
 	EmployeeRepository employeeRepository;
+
 	/**
 	 * 従業員情報を更新します。
 	 * 
@@ -39,16 +40,12 @@ public class UpdateEmployeeService {
 	 */
 	//TODO ここに記述
 	public void execute(EmployeeForm employeeForm) {
-//		EmployeeFormに格納された従業員情報をEmployeeエンティティに変換
+		//		EmployeeFormに格納された従業員情報をEmployeeエンティティに変換
 		Employee employee = BeanManager.copyFormToEntity(employeeForm);
-		
-//		データベース上の既存レコードを更新
+
+		//		データベース上の既存レコードを更新
 		employee = employeeRepository.save(employee);
-		
+
 	}
-	
-	
-	
-	
-	
+
 }

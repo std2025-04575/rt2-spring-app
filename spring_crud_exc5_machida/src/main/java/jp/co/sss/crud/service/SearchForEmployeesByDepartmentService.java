@@ -30,6 +30,7 @@ public class SearchForEmployeesByDepartmentService {
 	//TODO ここに記述
 	@Autowired
 	EmployeeRepository employeeRepository;
+
 	/**
 	 * 指定された部署に所属する従業員情報を取得します。
 	 * 
@@ -43,18 +44,18 @@ public class SearchForEmployeesByDepartmentService {
 	 */
 	//TODO ここに記述
 	public List<EmployeeBean> execute(Integer deptId) {
-//		部署IDを基に該当部署のDepartmentオブジェクトを作成
+		//		部署IDを基に該当部署のDepartmentオブジェクトを作成
 		Department department = new Department();
-		
-//		部署IDを代入
+
+		//		部署IDを代入
 		department.setDeptId(deptId);
-		
-//		指定された部署に所属する従業員情報を取得
+
+		//		指定された部署に所属する従業員情報を取得
 		List<Employee> employeeList = employeeRepository.findByDepartmentOrderByEmpId(department);
-		
-//		検索結果はBeanManagerを使用してEmployeeBeanリストに変換して返却
+
+		//		検索結果はBeanManagerを使用してEmployeeBeanリストに変換して返却
 		List<EmployeeBean> employeeBeanList = BeanManager.copyEntityListToBeanList(employeeList);
-		
+
 		return employeeBeanList;
 	}
 }

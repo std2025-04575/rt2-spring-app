@@ -30,6 +30,7 @@ public class LoginService {
 	//TODO ここに記述
 	@Autowired
 	EmployeeRepository repository;
+
 	/**
 	 * ログイン認証処理を実行します。
 	 * 
@@ -49,20 +50,20 @@ public class LoginService {
 	 */
 	//TODO ここに記述
 	public LoginResultBean execute(LoginForm loginForm) {
-//		入力された従業員IDとパスワードを用いてデータベース検索を行い、 該当する従業員情報が存在するかを確認します。
+		//		入力された従業員IDとパスワードを用いてデータベース検索を行い、 該当する従業員情報が存在するかを確認します。
 		Employee employee = repository.findByEmpIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
-		
-//		認証失敗
-		if(employee == null) {
+
+		//		認証失敗
+		if (employee == null) {
 			return LoginResultBean.failLogin("社員ID、またはパスワードが間違っています。");
 		}
-		
-//		認証成功
+
+		//		認証成功
 		EmployeeBean employeeBean = new EmployeeBean();
-//		エンティティ情報をBeanにコピー
+
+		//		エンティティ情報をBeanにコピー
 		employeeBean = BeanManager.copyEntityToBean(employee);
 		return LoginResultBean.succeedLogin(employeeBean);
-		
-		
+
 	}
 }
