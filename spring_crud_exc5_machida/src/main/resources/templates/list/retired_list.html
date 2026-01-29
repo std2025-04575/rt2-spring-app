@@ -29,7 +29,7 @@
 				<th class="authority">権限</th>
 				<th class="deptName">部署名</th>
 			</tr>
-			<tr th:each="retiredPerson: ${retiredPersons}" class="sort_table">
+			<tr th:each="retiredPerson: ${retiredPersons}">
 				<td th:text="${retiredPerson.empId}"></td>
 				<td th:text="${retiredPerson.empName}"></td>
 

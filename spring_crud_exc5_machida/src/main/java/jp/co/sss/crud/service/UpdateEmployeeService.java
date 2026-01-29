@@ -42,9 +42,10 @@ public class UpdateEmployeeService {
 	public void execute(EmployeeForm employeeForm) {
 		//		EmployeeFormに格納された従業員情報をEmployeeエンティティに変換
 		Employee employee = BeanManager.copyFormToEntity(employeeForm);
-
+		employee.setDeleteFlag(0);
+		
 		//		データベース上の既存レコードを更新
-		employee = employeeRepository.save(employee);
+		employeeRepository.save(employee);
 
 	}
 

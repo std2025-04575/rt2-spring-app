@@ -46,7 +46,7 @@ public class RegisterEmployeeService {
 		employee.setDeleteFlag(0);
 
 		//     DBを更新
-		employee = employeeRepository.save(employee);
+		employeeRepository.save(employee);
 
 	}
 

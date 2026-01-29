@@ -39,7 +39,7 @@
 			<th th:if="${session.loginUser.empId==2}" class="button">変更</th>
 			<th th:if="${session.loginUser.empId==2}" class="button">削除</th>
 		</tr>
-		<tr th:each="employee: ${employees}" class="sort_table">
+		<tr th:each="employee: ${employees}">
 			<th:block th:if="${employee.deleteFlag==0}">
 				<td th:text="${employee.empId}"></td>
 				<td th:text="${employee.empName}"></td>

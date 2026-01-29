@@ -41,7 +41,7 @@ public class SearchForEmployeesByEmpIdService {
 	public EmployeeBean execute(Integer empId) {
 		//	従業員IDを基にデータベースから該当する従業員エンティティの参照を取得
 		Employee employee = employeeRepository.findByEmpId(empId);
-
+      
 		//		BeanManagerを使用してEmployeeBeanに変換して返却
 		EmployeeBean employeeBean = BeanManager.copyEntityToBean(employee);
 
