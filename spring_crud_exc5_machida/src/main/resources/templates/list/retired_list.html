@@ -18,39 +18,37 @@
 		</div>
 	</th:block>
 	<!--	該当社員がいる場合-->
-	<th:block th:if="!${#lists.isEmpty(retiredPersons)}">
-		<table class="list_table">
-			<tr>
-				<th onclick="sort()" class="empId">社員ID</th>
-				<th>社員名</th>
-				<th class="gender">性別</th>
-				<th class="address">住所</th>
-				<th class="birthday">生年月日</th>
-				<th class="authority">権限</th>
-				<th class="deptName">部署名</th>
-			</tr>
-			<tr th:each="retiredPerson: ${retiredPersons}">
-				<td th:text="${retiredPerson.empId}"></td>
-				<td th:text="${retiredPerson.empName}"></td>
+	<table class="list_table" th:if="!${#lists.isEmpty(retiredPersons)}">
+		<tr>
+			<th onclick="sortEmpId()" class="empId">社員ID</th>
+			<th>社員名</th>
+			<th class="gender">性別</th>
+			<th class="address">住所</th>
+			<th class="birthday">生年月日</th>
+			<th class="authority">権限</th>
+			<th class="deptName">部署名</th>
+		</tr>
+		<tr th:each="retiredPerson: ${retiredPersons}">
+			<td th:text="${retiredPerson.empId}"></td>
+			<td th:text="${retiredPerson.empName}"></td>
 
-				<!--				th:switchとth:caseはJavaのswitch文の様に条件分岐を表現できる-->
-				<!--				この場合はgender=1の場合[男性]、gender=2の場合[女性]と表示される-->
+			<!--				th:switchとth:caseはJavaのswitch文の様に条件分岐を表現できる-->
+			<!--				この場合はgender=1の場合[男性]、gender=2の場合[女性]と表示される-->
 
-				<td th:switch="${retiredPerson.gender}">
-					<span th:case="1">男性</span> <span th:case="2">女性</span>
-				</td>
-				<td th:text="${retiredPerson.address}"></td>
-				<td th:text="${#dates.format(retiredPerson.birthday, 'yyyy/MM/dd')}"></td>
-				<td th:switch="${retiredPerson.authority}">
-					<span th:case="1">一般</span> <span th:case="2">管理者</span>
-				</td>
-				<td th:text="${retiredPerson.deptName}"></td>
-			</tr>
-		</table>
-		<p class="back_to_top_link">
-			<a th:href="@{/list}">一覧表示に戻る</a>
-		</p>
-	</th:block>
+			<td th:switch="${retiredPerson.gender}">
+				<span th:case="1">男性</span> <span th:case="2">女性</span>
+			</td>
+			<td th:text="${retiredPerson.address}"></td>
+			<td th:text="${#dates.format(retiredPerson.birthday, 'yyyy/MM/dd')}"></td>
+			<td th:switch="${retiredPerson.authority}">
+				<span th:case="1">一般</span> <span th:case="2">管理者</span>
+			</td>
+			<td th:text="${retiredPerson.deptName}"></td>
+		</tr>
+	</table>
+	<p class="back_to_top_link">
+		<a th:href="@{/list}">一覧表示に戻る</a>
+	</p>
 	<script type="text/javascript" th:src="@{/js/sort_empid.js}" charset="UTF-8">
 	</script>
 </body>

@@ -1,6 +1,6 @@
 let isAsc = true;
 
-function sort() {
+function sortEmpId() {
 	//	テーブル情報を取得
 	let employee = document.querySelector('.list_table');
 	//行情報を取得
